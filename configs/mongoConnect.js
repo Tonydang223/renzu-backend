@@ -4,8 +4,10 @@ const mongoose = require('mongoose')
 async function connect() {
     try {
         await mongoose.connect(process.env.DB_CONNECTION,{
-            dbName:process.env.DB_NAME,
-            useNewUrlParser: true
+            user: process.env.MONGO_USR,
+            pass: process.env.MONGO_PASS,
+            useNewUrlParser: true,
+            useUnifiedTopology: true
         });
         console.log('connect ok!')
     } catch (error) {
