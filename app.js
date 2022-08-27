@@ -7,7 +7,7 @@ const bodyPar = require('body-parser');
 const dbConnection = require('./configs/mongoConnect')
 require('dotenv').config();
 
-app.get('/home', (req, res) => res.send('alo'));
+app.get('/', (req, res) => res.send('alo'));
 app.use(cors());
 app.use(morgan('combined'));
 app.use(bodyPar.json());
