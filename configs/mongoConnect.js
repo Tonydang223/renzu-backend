@@ -7,7 +7,7 @@ async function connect() {
             user: process.env.MONGO_USR,
             pass: process.env.MONGO_PASS,
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
         });
         console.log('connect ok!')
     } catch (error) {
