@@ -6,7 +6,7 @@ const sendEmail = require('../../utils/sendEmail');
 class authControler {
     async signUp(req, res, next) {
         try {
-            const {email, password} = req.body
+            const {email, password, username} = req.body
             if(!email ||
             !password || String(password).length > 8) {
                return res.status(400).json({message: 'email or password is not right format'})
@@ -14,7 +14,7 @@ class authControler {
             const emailExisted = await Userm.findOne({email: email});
             if(emailExisted) return res.status(409).json({mgs:'Email is existed!!!'})
             const user = new Userm({
-                email, password
+                email, password, firstName: username
             })
             const usersaved = await user.save();
             const token = await jwt.sign({_id: usersaved._id}, process.env.EMAIL_TOKEN_SECRET, {expiresIn: '2h'})
