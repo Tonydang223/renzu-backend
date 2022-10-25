@@ -6,6 +6,7 @@ async function connect() {
         await mongoose.connect(process.env.DB_CONNECTION,{
             user: process.env.MONGO_USR,
             pass: process.env.MONGO_PASS,
+            dbName: process.env.MONGO_DBNAME,
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
