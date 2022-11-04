@@ -1,6 +1,6 @@
 require('dotenv').config();
 const mailer = require('nodemailer')
-const emailActive =(acc,url,text)=>{
+const emailActive =(acc,url,text, contentMail, title)=>{
     let content
     const transporter = mailer.createTransport({
         host:'smtp.gmail.com',
@@ -18,10 +18,10 @@ const emailActive =(acc,url,text)=>{
     })
     content = `
     <div style="margin:auto;padding:20px 30px;font-size:1.5em;background:rgba(0,0,0,0.05)">
-    <h3>Thanks you for being a new member</h3>
+    <h3>${title}</h3>
     <div style="font-size:18px">
     <p style="color:#2a2b2b"> 
-    Firstly, you completed registering a new account. Please click the text here to vertify your new account, so you can log in the system.
+    ${contentMail}
     </p>
     <p style="color:#2a2b2b"> 
     The link is expired at 1 hour 

@@ -4,10 +4,13 @@ const cors = require('cors');
 const morgan = require('morgan');
 const routes = require('./src/routes/index');
 const bodyPar = require('body-parser');
+const path = require('path');
 const dbConnection = require('./configs/mongoConnect')
 require('dotenv').config();
 
-app.get('/', (req, res) => res.send('alo'));
+app.get('/', (req, res) => {res.send('alo')});
+app.set('views', path.join(__dirname, '/src/views'));
+app.set('view engine', 'ejs');
 app.use(cors());
 app.use(morgan('combined'));
 app.use(bodyPar.json());
